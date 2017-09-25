@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<meta charset="UTF-8">
+<title>歪歪管理系统登录</title>
+<body>
+
+	<div>
+		<p>用戶名：</p>
+		<input th:type="text" th:name="loginName" th:id="loginName">
+
+	</div>
+	<div>
+		<p>密碼：</p>
+		<input th:type="password" th:name="loginPassword"
+			th:id="loginPassword">
+	</div>
+	<div>
+		<input th:type="button" onclick="ceshi()" th:value="登录" />
+	</div>
+</body>
+<script type="text/javascript">
+	
+function ceshi() {
+    var loginPath = "http://localhost:8080/user/login";
+   
+    var userArray = {};
+    var loginName = $("#loginName").val();
+    var loginPassword = $("#loginPassword").val();
+    alert("账号不能为空");
+    if(loginName == ""){
+        alert("账号不能为空");
+        return false;
+    }
+    if(password == ""  ){
+        alert("密码不能为空");
+        return false;
+    }
+    userArray["loginName"] = loginName;
+    userArray["loginPassword"] = password;
+    $.ajax({
+        url:loginPath,
+        type:"post",
+        dataType:"json",
+        contentType: "application/json",
+        async: false,
+        data:JSON.stringify(userArray),
+        success:function callbackFun(data){
+            //解析json
+            alert(data.responseDesc);
+            if(data.code == 200){
+                userArray = {};
+                /*userArray["userId"] = data.userId;
+                userArray["accessToken"] = data.accessToken;*/
+                localStorage.userId = data.userId;
+                localStorage.accessToken = data.accessToken;
+                localStorage.loginName = data.loginName;
+              /*   window.location.href ="/mainPage"; */
+            }
+        },
+        error:function(data){
+            alert(data);
+        }
+    });
+}
+
+</script>
+</html>

@@ -1,6 +1,5 @@
 package com.ityun.mc.model;
 
-import java.util.Date;
 import javax.persistence.*;
 
 public class User {
@@ -8,17 +7,25 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    /**
+     * 用户id
+     */
+    private String userid;
+
+    /**
+     * 用户名
+     */
     private String username;
 
+    /**
+     * 用户密码
+     */
     private String password;
 
-    @Column(name = "nick_name")
-    private String nickName;
-
-    private Integer sex;
-
-    @Column(name = "register_date")
-    private Date registerDate;
+    /**
+     * 用户权限
+     */
+    private Integer powerid;
 
     /**
      * @return id
@@ -35,72 +42,74 @@ public class User {
     }
 
     /**
-     * @return username
+     * 获取用户id
+     *
+     * @return userid - 用户id
+     */
+    public String getUserid() {
+        return userid;
+    }
+
+    /**
+     * 设置用户id
+     *
+     * @param userid 用户id
+     */
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    /**
+     * 获取用户名
+     *
+     * @return username - 用户名
      */
     public String getUsername() {
         return username;
     }
 
     /**
-     * @param username
+     * 设置用户名
+     *
+     * @param username 用户名
      */
     public void setUsername(String username) {
         this.username = username;
     }
 
     /**
-     * @return password
+     * 获取用户密码
+     *
+     * @return password - 用户密码
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * @param password
+     * 设置用户密码
+     *
+     * @param password 用户密码
      */
     public void setPassword(String password) {
         this.password = password;
     }
 
     /**
-     * @return nick_name
+     * 获取用户权限
+     *
+     * @return powerid - 用户权限
      */
-    public String getNickName() {
-        return nickName;
+    public Integer getPowerid() {
+        return powerid;
     }
 
     /**
-     * @param nickName
+     * 设置用户权限
+     *
+     * @param powerid 用户权限
      */
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
-    /**
-     * @return sex
-     */
-    public Integer getSex() {
-        return sex;
-    }
-
-    /**
-     * @param sex
-     */
-    public void setSex(Integer sex) {
-        this.sex = sex;
-    }
-
-    /**
-     * @return register_date
-     */
-    public Date getRegisterDate() {
-        return registerDate;
-    }
-
-    /**
-     * @param registerDate
-     */
-    public void setRegisterDate(Date registerDate) {
-        this.registerDate = registerDate;
+    public void setPowerid(Integer powerid) {
+        this.powerid = powerid;
     }
 }

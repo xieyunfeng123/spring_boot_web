@@ -4,7 +4,7 @@ import com.ityun.mc.core.Service;
 
 
 /**
- * Created by CodeGenerator on 2017/09/21.
+ * Created by CodeGenerator on 2017/09/25.
  */
 public interface UserService extends Service<User> {
 
