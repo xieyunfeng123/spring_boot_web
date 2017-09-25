@@ -14,9 +14,9 @@ public class pageController {
      * 首页
      * @return
      */
-    @RequestMapping("/index2")
+    @RequestMapping("/index")
     public String page(){
-        return "/index2";
+        return "/index";
     }
 
 
